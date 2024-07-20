@@ -1,0 +1,220 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Faculty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Course Management</a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_course') }}">Add Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_topic') }}">Add Topics</a>
+
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_subtopic') }}">Add Subtopics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_faculty') }}">Add Faculty</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+    <div class="container mt-5">
+        <h1>Edit Faculty</h1>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="current_photo" value="{{ faculty.photo }}">
+            <div class="form-group">
+                <label for="faculty_name">Faculty Name</label>
+                <input type="text" class="form-control" id="faculty_name" name="faculty_name" value="{{ faculty.Faculty_name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="faculty_description">Faculty Description</label>
+                <textarea class="form-control" id="faculty_description" name="faculty_description">{{ faculty.Faculty_description }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Faculty</button>
+        </form>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Faculty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar .nav-link {
+            color: #cfd8dc;
+            font-size: 1.1em;
+        }
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #aaaaaa;
+        }
+        .form-control {
+            border-radius: 0.25rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .form-group-photo input[type="file"] {
+            display: none;
+        }
+        .upload-photo-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-photo-btn:hover {
+            background-color: #0056b3;
+        }
+        .sidebar .nav-link:hover,
+         .sidebar .nav-link.active {
+             color: #fff;
+             background-color: #007bff;
+         }
+         .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding-top: 130px;">
+        <!-- header -->
+        <div style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: fixed; top: 0; width: 100%;
+            background-color: #182554;
+            z-index: 9999;
+          " class="navlinks">
+            <a href="#" class="links">
+                <img src="../static/uploads/logo.jpg" style="height: 100px;width:170px;">
+                <span style="color: greenyellow ; font-size: 40px;"> Vertex Institute</span>
+            </a>
+            
+        </div>
+        <!-- header -->
+    </div>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Course Management</a>
+    </nav> -->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_course') }}">Add Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_topic') }}">Add Topics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_subtopic') }}">Add Subtopics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_faculty') }}">Add Faculty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('feedback_display') }}" >Feedbacks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('enroll_display') }}" >Enrollments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
+                <div class="container mt-5">
+                    <h1>Edit Faculty</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="current_photo" value="{{ faculty.photo }}">
+                        <div class="form-group">
+                            <label for="faculty_name">Faculty Name</label>
+                            <input type="text" class="form-control" id="faculty_name" name="faculty_name" value="{{ faculty.Faculty_name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="faculty_description">Faculty Description</label>
+                            <textarea class="form-control" id="faculty_description" name="faculty_description">{{ faculty.Faculty_description }}</textarea>
+                        </div>
+                        <div class="form-group form-group-photo">
+                            <label for="photo" class="upload-photo-btn">Upload Photo</label>
+                            <input type="file" class="form-control" id="photo" name="photo" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Faculty</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Footer -->
+<footer class="text-center mt-5" style="background-color: #182554; color: white; padding: 10px 0;">
+    <div class="container">
+        <p>&copy; 2024 Vertex Software. All rights reserved.</p>
+        <p>
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Privacy Policy</a> |
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Terms of Service</a> |
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Contact Us</a>
+        </p>
+    </div>
+</footer>
+<!-- End of Footer -->
+</body>
+</html>
+

@@ -1,0 +1,169 @@
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Courses</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+         .sidebar {
+             height: 100vh;
+             padding-top: 20px;
+             background-color: #343a40;
+         }
+         .sidebar .nav-link {
+             color: #cfd8dc;
+             font-size: 1.1em;
+             border-radius: 5px;
+             transition: background-color 0.3s ease;
+         }
+         .sidebar .nav-link:hover,
+         .sidebar .nav-link.active {
+             color: #fff;
+             background-color: #007bff;
+         }
+         .content {
+             padding: 20px;
+             background-color: #f8f9fa;
+             border-radius: 10px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+         .content h1 {
+             color: #007bff;
+             font-family: 'Arial', sans-serif;
+             font-weight: bold;
+             text-shadow: 2px 2px 4px #aaaaaa;
+         }
+         .course-item {
+             border: none;
+             border-radius: 10px;
+             margin-bottom: 20px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+             background-color: #fff;
+             padding: 20px;
+         }
+         .course-item:hover {
+             transform: scale(1.02);
+             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+         }
+         .course-item h5 {
+             color: #007bff;
+             font-weight: bold;
+         }
+         .course-item img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 10px;
+             margin-top: 10px;
+         }
+         .course-item .btn {
+             margin-top: 10px;
+         }
+         .btn-primary:hover {
+            background-color: #0056b3;
+        }
+     </style>
+ </head>
+ <body>
+    <div style="padding-top: 130px;">
+        <!-- header -->
+        <div style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            position: fixed; top: 0; width: 100%;
+            background-color: #182554;
+            z-index: 9999;
+          " class="navlinks">
+            <a href="#" class="links">
+                <img src="../static/uploads/logo.jpg" style="height: 100px;width:170px;">
+                <span style="color: greenyellow ; font-size: 40px;"> Vertex Institute</span>
+            </a>
+            
+        </div>
+        <!-- header -->
+    </div>
+ <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <a class="navbar-brand" href="#">Course Management</a>
+ </nav> -->
+ <div class="container-fluid">
+     <div class="row">
+         <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+             <div class="sidebar-sticky">
+                 <ul class="nav flex-column">
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('add_course') }}">Add Courses</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('add_topic') }}">Add Topics</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('add_subtopic') }}">Add Subtopics</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('add_faculty') }}">Add Faculty</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('feedback_display') }}" >Feedbacks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('enroll_display') }}" >Enrollments</a>
+                    </li>
+                     <!-- <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('feedback_display') }}">FeedBack</a>
+                    </li> -->
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                     </li>
+                 </ul>
+             </div>
+         </nav>
+         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
+             <h1 class="mb-4">Courses</h1>
+             <div class="list-group">
+                {% for course in courses %}
+                <div class="course-item">
+                    <h5>{{ course.course_name }}</h5>
+                    <img src="{{ url_for('static', filename='uploads/' ~ course.photo) }}" alt="{{ course.course_name }}">
+                    
+                    <p>{{ course.course_description }}</p>
+                    <p><strong>Pre-requisites:</strong> {{ course.pre_requisites }}</p>
+                    <p><strong>Course Duration:</strong> {{ course.course_duration }}</p>
+                    <p><strong>Training Methods:</strong> {{ course.training_methods }}</p>
+                    <p><strong>Timings:</strong> {{ course.timings }}</p>
+                    <p><strong>Batch Start Date:</strong> {{ course.batch_start_date }}</p>
+                    <a href="{{ url_for('edit_course', course_id=course.course_id) }}" class="btn btn-primary btn-sm">Edit</a>
+                    <form action="{{ url_for('delete_course', course_id=course.course_id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    <a href="{{ url_for('topics', course_id=course.course_id) }}" class="btn btn-secondary btn-sm">Details</a>
+                </div>
+            {% endfor %}
+            
+             </div>
+         </main>
+     </div>
+ </div>
+ <!-- Footer -->
+<footer class="text-center mt-5" style="background-color: #182554; color: white; padding: 10px 0;">
+    <div class="container">
+        <p>&copy; 2024 Vertex Software. All rights reserved.</p>
+        <p>
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Privacy Policy</a> |
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Terms of Service</a> |
+            <a href="#" style="color: #cfd8dc; text-decoration: none;">Contact Us</a>
+        </p>
+    </div>
+</footer>
+<!-- End of Footer -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+ </html>
+ 
