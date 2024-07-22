@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Management System - View Registrations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background-color: #2c3e50;
+            padding-top: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: #bdc3c7;
+            font-size: 1.1em;
+        }
+
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: #2980b9;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        h1 {
+            color: #f5fafa;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #aaaaaa;
+        }
+
+        .header {
+            background-color: #2980b9;
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 0;
+        }
+
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <header>
+            <h1>Event Management System</h1>
+        </header>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('events') }}">Manage Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{url_for('manage_registrations')}}">Manage Registrations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_event') }}">Add Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('view_event') }}">View Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('manage_users') }}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="container">
+                    <h1>Registrations for {{ event_title }}</h1>
+                    {% if registrations %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Registration Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for registration in registrations %}
+                            <tr>
+                                <td>{{ registration.name }}</td>
+                                <td>{{ registration.email }}</td>
+                                <td>{{ registration.registration_date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="alert alert-info" role="alert">
+                        No registrations for this event.
+                    </div>
+                    {% endif %}
+                    <a href="{{ url_for('manage_registrations') }}" class="btn btn-primary mt-3">Click here to go back</a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <div class="container">
+            <p>&copy; Vaheeda All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
