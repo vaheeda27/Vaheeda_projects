@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            super hospital
+        </title>
+        <link rel="stylesheet" href="../static/style.css">
+        <style>
+          </style>
+
+    </head>
+    <body>
+        <div class="hea">
+
+            <p>Contact Us+91 6366200000/01 | superhospital.com</p>
+
+        </div>
+        <div class="mydiv">
+            <div class="test">
+            <span style="font-size: 50px;font-family: forte; color:#428bca;" >super</span><span style="font-size: 50px;font-family: forte; color:black;" > hospital</span>
+            </div>
+             
+            <nav class="test1">
+                <a href="{{url_for('dashboard')}}">DASHBOARD</a>
+                <a href="{{url_for('contact_us')}}">CONTACT-US</a>
+                <a href="{{url_for('doctors')}}">DOCTORS</a>
+                <a href="{{url_for('services')}}">SERVICE</a>
+                <a href="{{url_for('about_us')}}">ABOUT-US</a>
+                <a href="{{url_for('index1')}}">HOME</a>
+            </nav>
+        
+        </div>
+        <hr color="gray">
+        
+     <div class="mid">
+        <div style="background-image: url(../static/pictures/a.gif);">
+            <p>
+                <br>
+                <br>Health care services<br>
+                <font size="5px">We Care About Your Health</font>
+            </p>
+        </div>
+     </div>
+            
+        
+        <div>
+    <p>
+        We are Medical Center
+    </p>
+    <br>
+    <br>
+    <p>
+        <b>WE HAVE MEDICAL PLAN OPTIONS FOR YOU</b>
+        <br>
+        <br>
+    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam labore, distinctio tempore, culpa 
+        totam neque, ullam facilis nulla voluptate nobis cupiditate! Deserunt eaque aliquid maxime exercitationem molestiae ab corporis repellat.</p>
+    
+
+        <br>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos deleniti aspernatur hic recusandae dolorem vero porro quod praesentium laborum fugit placeat corrupti
+        
+    illum obcaecati, tenetur similique, sed rem reiciendis ipsam.</p>
+
+    <br>
+         <p>
+        <li> Nulla suscipit repudiandae expedita numquam fugit</li> 
+        <li>sunt aspernatur veniam tempore minus accusantium beatae provident</li>
+        <li>fuga voluptates possimus. Aspernatur voluptatem impedit </li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis</li>
+        <li> impedit dolor quaerat earum exercitationem facilis</li>
+        <li>Iure placeat esse laudantium odit hic quos</li>
+         
+        </p>
+</div>
+<div id="container">
+    <h1 style="font-family: forte; font-size: 50px;">Make an Appointment</h1>
+    
+    </div>
+    <form action="{{ url_for('index1') }}" method="POST">
+        <table id="tab" cellspacing="5" width="500px" cellpadding="15">
+            <tr>
+                <td>
+                    <label for="firstname">firstname:</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+                </td>
+                <td>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email Id" required>
+                </td>
+                <td>
+                    <label for="mob">Number:</label>
+                    <input type="mob" id="mob" name="mob" placeholder="Number" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="sex">Sex:</label>
+                    <select id="sex" name="sex" required>
+                        <option value="">Select sex</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="appointment_date">Appointment Date:</label>
+                    <input type="date" id="appointment_date" name="appointment_date" placeholder="Appointment Date" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your message here" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+<footer>
+    <div class="f">
+        @SUPER Hospital site designed and developed by mitraz
+    </div>
+</footer>
+    </body>
+</html>

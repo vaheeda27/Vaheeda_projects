@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #7ca8e2;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+    </style>
+
+</head>
+<body>
+    <nav class="test1">
+        <a href="{{url_for('dashboard')}}">DASHBOARD</a>
+        <a href="{{url_for('contact_us')}}">CONTACT-US</a>
+        <a href="{{url_for('doctors')}}">DOCTORS</a>
+        <a href="{{url_for('services')}}">SERVICE</a>
+        <a href="{{url_for('about_us')}}">ABOUT-US</a>
+        <a href="{{url_for('index1')}}">HOME</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                
+                <th>id</th>
+                
+                <th>firstname</th>
+                <th>lastname</th>               
+                <th>email</th>
+                <th>number</th>           
+            <th>appointment_date</th>
+            <th>sex</th>
+            <th>message</th>
+            </thead>
+
+             <tbody> 
+                  {% for row in data %}
+                  <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{{row[6]}}</td>  
+                    <td>{{row[7]}}</td>
+                    <td><a href="{{ url_for('update', id=row[0]) }}">Edit</a></td> 
+                        <td><a href="{{ url_for('delete', id=row[0]) }}">Delete</a></td>        
+                  </tr>
+                  {% endfor %}
+             </tbody>
+             </table>
+
+             <br><br>
+        
+                 <br><br>
+        
+
+    <br>
+                  
+</body>
+</html>
